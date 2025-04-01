@@ -1,9 +1,12 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import TitleView from '@/components/Home/TitleView.vue'
+import PopularSection from '@/components/Home/PopularSection.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <TitleView />
+    <PopularSection/>
   </main>
 </template>
+

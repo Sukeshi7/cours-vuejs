@@ -3,23 +3,23 @@
 const menuItems = [
   {
     name: 'Accueil',
-    url: '#'
+    url: '/'
   },
   {
-    name: 'Nouveautés',
-    url: '#'
+    name: 'Catégories',
+    url: '/categories'
   },
   {
-    name: 'Homme',
-    url: '#'
+    name: 'Sous-Catégories',
+    url: '/subcategories'
   },
   {
-    name: 'Femme',
-    url: '#'
+    name: 'Produit',
+    url: '/product'
   },
   {
-    name: 'Contact',
-    url: '#'
+    name: 'Panier',
+    url: '/cart'
   },
 ]
 </script>

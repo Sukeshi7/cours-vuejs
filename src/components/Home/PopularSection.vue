@@ -1,32 +1,12 @@
 <script setup>
 import ProductCard from '@/components/ProductCard.vue'
+import { useProductStore } from "@/stores/useProductStore.js"
+const { getPopularProducts } = useProductStore()
 
-const products = [
-  {
-    title: 'Manteau',
-    price: 10,
-    desc: 'chaud',
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKvAz8bSMDxZvg1ZjElGs285z3WDhxMySLcA&s'
-  },
-  {
-    title: 'Chaussure',
-    price: 20,
-    desc: 'sympa',
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKvAz8bSMDxZvg1ZjElGs285z3WDhxMySLcA&s'
-  },
-  {
-    title: 'Pull',
-    price: 30,
-    desc: 'laine',
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKvAz8bSMDxZvg1ZjElGs285z3WDhxMySLcA&s'
-  },
-  {
-    title: 'Chaussettes',
-    price: 40,
-    desc: 'pilou',
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKvAz8bSMDxZvg1ZjElGs285z3WDhxMySLcA&s'
-  }
-]
+const products = getPopularProducts();
+
+//to be fixed
+
 </script>
 
 <template>

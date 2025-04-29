@@ -2,8 +2,11 @@
 
 import CartElementCard from "@/components/CartElementCard.vue";
 import {computed, ref} from "vue";
+import {useCheckoutStore} from "@/stores/useCheckoutStore.js";
 
-const productsInCart = ref(
+const { products } = useCheckoutStore();
+
+/*const productsInCart = ref(
     [
         {
             id: 1,
@@ -30,19 +33,20 @@ const productsInCart = ref(
             img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKvAz8bSMDxZvg1ZjElGs285z3WDhxMySLcA&s'
         },
     ]
-)
+)*/
 
-let totalPrice = computed(() => {
+/*let totalPrice = computed(() => {
     let result = 0
     for (let i = 0; i < productsInCart.value.length; i++) {
         result += productsInCart.value[i].price * productsInCart.value[i].quantity
     }
     return result;
-});
+});*/
 
-function deleteCartElement(product) {
+/*function deleteCartElement(product) {
     productsInCart.value = productsInCart.value.filter(item => item.id !== product.id);
-}
+}*/
+
 </script>
 
 <template>
@@ -50,14 +54,24 @@ function deleteCartElement(product) {
         <h2 class="text-2xl font-bold mb-6">Mon Panier</h2>
         <div class="space-y-6">
             <CartElementCard
-                v-for="product in productsInCart"
+                v-for="product in products"
+                :key="product.id"
+                :id="product.id"
                 :title="product.title"
                 :price="product.price"
                 :size="product.size"
                 :quantity="product.quantity"
                 :img="product.img"
-                @deleteCartElement="deleteCartElement(product)"
             />
+
+            <div class="flex justify-between items-center bg-gray-100 p-4 rounded-lg">
+                <p class="text-lg font-semibold">Code de réduction</p>
+                <input
+                    type="text"
+                    placeholder="Entrez votre code"
+                    class="border border-gray-300 rounded-lg px-4 py-2 w-1/3"
+                />
+            </div>
 
             <!-- Résumé commande -->
             <div class="text-right mt-10">

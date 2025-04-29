@@ -1,4 +1,5 @@
 <script setup>
+import { useCheckoutStore } from '@/stores/useCheckoutStore.js'
 
 const props = defineProps({
     title: String,
@@ -22,11 +23,14 @@ const props = defineProps({
     }
 })
 
-const emit = defineEmits(['deleteCartElement'])
+//const emit = defineEmits(['deleteCartElement'])
+
+const { removeProduct } = useCheckoutStore()
 
 function deleteElement() {
     // remonter infoavec emit dans le parent
-    emit('deleteCartElement', props.title)
+//    emit('deleteCartElement', props.title)
+    removeProduct(props.id)
 }
 </script>
 
@@ -42,7 +46,7 @@ function deleteElement() {
         </div>
         <div class="text-right">
             <p class="font-bold">{{ props.price }} €</p>
-            <button class="text-red-500 text-sm hover:underline mt-1" @click="deleteElement()">Supprimer</button>
+            <button class="text-red-500 text-sm hover:underline mt-1" @click="deleteElement">Supprimer</button>
         </div>
     </div>
 

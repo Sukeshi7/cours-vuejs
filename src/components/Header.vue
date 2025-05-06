@@ -18,11 +18,7 @@ const menuItems = [
     {
         name: 'Produit',
         url: '/product'
-    },
-    {
-        name: 'Panier',
-        url: '/cart'
-    },
+    }
 ]
 
 const checkoutStore = useCheckoutStore();

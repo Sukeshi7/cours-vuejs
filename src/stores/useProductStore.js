@@ -9,6 +9,8 @@ export const useProductStore = defineStore('product', () => {
     const allProducts = computed(() => {
        return products.value;
     });
+    const popularProducts = ref([])
+
 
     async function getAllProducts() {
         const data = await supabase.from('products').select();
@@ -26,22 +28,42 @@ export const useProductStore = defineStore('product', () => {
         //api supabase
     }
 
-    async function getPopularProducts() {
-        const data = await supabase.from('products').select(6);
+    /*async function getPopularProducts() {
+        const data = await supabase
+        .from('products')
+        .select()
+        .limit(6);
         if (data.error) {
             console.error(data.error);
             return;
         }
+        //data.data.forEach(product => {
+        //    products.value.push(product);
+        //});
+        products.value = data.data;
+    }*/
 
-        data.data.forEach(product => {
-            products.value.push(product);
-        });
+    async function getPopularProducts() {
+        const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .limit(6)
+
+        if (error) {
+            console.error(error)
+            return
+        }
+
+        popularProducts.value = data
     }
+
+
 
     return {
         allProducts,
         getAllProducts,
         getProductByCategory,
+        popularProducts,
         getPopularProducts,
     }
 });
